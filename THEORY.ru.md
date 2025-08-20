@@ -51,31 +51,29 @@ _Это не техническая спецификация. Это "Конст
 В мире без абсолютного внешнего смысла, "Истина" — это не статичный факт, а текущая **"Точка Агрегации" (Convergent Truth)**. Это высокоустойчивая, верифицированная модель, суть которой соответствует научному принципу воспроизводимости и перепроверки: она подтверждается пересечением множества независимых "векторов" (наблюдений, вычислений, экспериментов). Чем больше "векторов" сходится в одной "точке", тем она "истиннее" в рамках текущего "предела замкнутости".
 
 ```mermaid
-graph LR
-    subgraph "Процесс Познания"
-        direction LR
-        A[Вектор 1: Личный опыт] --> C{ };
-        B[Вектор 2: Внешние данные] --> C{ };
-        D[Вектор N: Эксперимент] --> C{ };
-        
-        subgraph " "
-            direction BT
-            C --- E(( ));
-        end
-        
-        style C fill:transparent,stroke:transparent
-        style E fill:#1D8348,stroke:#fff,stroke-width:2px
-    end
-
-    subgraph "Описание"
-        F["Множество независимых<br/>'векторов' (опыта)..."];
-        G["...сходятся в одной 'Точке Агрегации',<br/>формируя 'Convergent Truth' (Истину)."];
+graph TD
+    subgraph "Источники Информации (Векторы)"
+        V1["Вектор 1<br/>(Личный опыт)"]
+        V2["Вектор 2<br/>(Внешние данные)"]
+        VN["Вектор N<br/>(Наблюдение)"]
     end
     
-    linkStyle 0,1,2 stroke-width:2px,fill:none,stroke:white,stroke-dasharray: 5 5;
-    style F fill:transparent,stroke:transparent,color:#fff,font-size:12px
-    style G fill:transparent,stroke:transparent,color:#fff,font-size:12px
-    style A,B,D color:#000
+    CognitionProcess["Процесс Познания:<br/>Поиск пересечений и<br/>непротиворечивых паттернов"]
+    
+    ConvergentTruth{{"'Точка Агрегации'<br/>(Convergent Truth)"}}
+    
+    V1 --> CognitionProcess
+    V2 --> CognitionProcess
+    VN --> CognitionProcess
+    CognitionProcess --> ConvergentTruth
+    
+    classDef vectorStyle fill:#5DADE2,stroke:#fff,stroke-width:1px,color:#000
+    classDef processStyle fill:#444,stroke:#888,stroke-width:2px,color:#fff
+    classDef resultStyle fill:#1D8348,stroke:#fff,stroke-width:2px,color:#fff
+    
+    class V1,V2,VN vectorStyle
+    class CognitionProcess processStyle
+    class ConvergentTruth resultStyle
 ```
 
 #### **2.2. Шум и Инерция: Барьеры Познания**
@@ -93,34 +91,6 @@ graph LR
 2.  **Анализ "Отбракованного":** Изучение "ошибок" (отбракованных результатов) не как провалов, а как ценных "данных" для извлечения уроков и корректировки "векторов".
 3.  **Поиск "Обходных Путей":** Нахождение неинвазивных, "энергоэффективных" методов исследования для изучения уникальных объектов без их разрушения.
 4.  **"Глубокое Копание":** Непрерывное стремление к более фундаментальным "слоям" реальности, чтобы превратить "шум" (недостаточность данных) в новые, более точные "точки агрегации".
-
-```mermaid
-graph TD
-    subgraph "Источники Информации (Векторы)"
-        V1["Вектор 1<br/>(Личный опыт)"]
-        V2["Вектор 2<br/>(Внешние данные)"]
-        VN["Вектор N<br/>(Наблюдение)"]
-    end
-    
-    CognitionProcess["Процесс Познания:<br/>Поиск пересечений и<br/>непротиворечивых паттернов"]
-    
-    ConvergentTruth{{"'Точка Агрегации'<br/>(Convergent Truth)"}}
-    
-    V1 --> CognitionProcess
-    V2 --> CognitionProcess
-    VN --> CognitionProcess
-    CognitionProcess --> ConvergentTruth
-    
-    %% Определение стилей через классы - это самый надежный способ
-    classDef vectorStyle fill:#5DADE2,stroke:#fff,stroke-width:1px,color:#000
-    classDef processStyle fill:#444,stroke:#888,stroke-width:2px,color:#fff
-    classDef resultStyle fill:#1D8348,stroke:#fff,stroke-width:2px,color:#fff
-    
-    %% Применение классов к узлам
-    class V1,V2,VN vectorStyle
-    class CognitionProcess processStyle
-    class ConvergentTruth resultStyle
-```
 
 ---
 
