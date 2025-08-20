@@ -22,39 +22,29 @@
     3.  **Концептуальный Слой (`spaCy`):** Индексирует ключевые концепты (леммы), формируя тематическое ядро знаний. *("о чём здесь речь?")*
 
 ```mermaid
-graph TD
-    subgraph "Процесс Запоминания в UniversalMemory"
-        direction LR
-        
-        Input["Входящий 'Опыт'<br/>(UserImpulse, ReportNode, etc.)"]
-
-        subgraph "Деконструкция"
-            Process["Извлечение Сущностей"]
-            Entities("<b>Концепты</b> (Леммы)<br/><b>Связи</b> (Структура)")
-            Process --> Entities
-        end
-
-        subgraph "Интеграция в Слои Памяти"
-            L1["<b>Графовый Слой</b><br/>(networkx)"]
-            L2["<b>Векторный Слой</b><br/>(ChromaDB)"]
-            L3["<b>Концептуальный Слой</b><br/>(token_index)"]
-        end
-
-        Input --> Process
-        Entities --> L1
-        Entities --> L2
-        Entities --> L3
-    end
+flowchart TD
+    Input["Входящий 'Опыт'<br/>(UserImpulse, ReportNode, etc.)"]
+    Deconstruction["<b>Деконструкция:</b><br/>Извлечение Концептов и Связей"]
     
-    classDef layerStyle fill:#1D8348,stroke:#fff,stroke-width:1px,color:#fff
-    classDef inputStyle fill:#5DADE2,stroke:#fff,stroke-width:1px,color:#000
-    classDef processStyle fill:#444,stroke:#888,stroke-width:2px,color:#fff
-    classDef entitiesStyle fill:#FAD7A0,stroke:#fff,stroke-width:1px,color:#000
+    subgraph "Интеграция в Три Слоя Памяти"
+        direction LR
+        L1[/"<b>Графовый Слой</b><br/>(networkx)"/]
+        L2[/"<b>Векторный Слой</b><br/>(ChromaDB)"/]
+        L3[/"<b>Концептуальный Слой</b><br/>(token_index)"/]
+    end
 
-    class L1,L2,L3 layerStyle
-    class Input inputStyle
-    class Process processStyle
-    class Entities entitiesStyle
+    Input --> Deconstruction
+    Deconstruction --> L1
+    Deconstruction --> L2
+    Deconstruction --> L3
+
+    classDef memoryStyle fill:#1D8348,stroke:#fff,stroke-width:2px,color:#fff
+    classDef processStyle fill:#444,stroke:#888,stroke-width:2px,color:#fff
+    classDef llmStyle fill:#5DADE2,stroke:#fff,stroke-width:1px,color:#000
+    
+    class L1,L2,L3 memoryStyle
+    class Input llmStyle
+    class Deconstruction processStyle
 ```
 
 *   **Принцип Самоорганизации:** Память является **аутопоэтической**. Любой "опыт" (импульс пользователя, результат поиска, внутренняя рефлексия) не просто сохраняется, а автоматически деконструируется и встраивается во все три слоя. Это формирует устойчивые **"точки агрегации"**, а не просто свалку сырых данных.
@@ -66,33 +56,24 @@ graph TD
 Взаимодействие компонентов организовано в виде **асинхронного, агентного Когнитивного Цикла**, который является прямой реализацией принципа "Перебора с Отбраковкой".
 
 ```mermaid
-graph TD
-    subgraph T.H.E.A. Cognitive Core
-        direction TB
-        
-        Orchestrator(Orchestrator<br/>/Нервная Система/)
-        
-        subgraph Services [Когнитивные Сервисы]
-            Planner("Planner<br/>(Планирование)")
-            Recall("Recall<br/>(Припоминание)")
-            WebSearch("WebSearch<br/>(Веб-поиск)")
-            Synthesizer("Synthesis<br/>(Синтез)")
-            Reflection("Reflection<br/>(Рефлексия)")
-        end
-        
-        LLM[("Cognitive Engine<br/>(LLM)")]
+flowchart TD
+    Orchestrator("Orchestrator<br/>Нервная Система")
+    Services["Когнитивные Сервисы<br/>(Планирование, Поиск, Синтез...)"]
+    LLM(("Cognitive Engine<br/>(LLM)"))
+    UniversalMemory[/"UniversalMemory<br/>(Память)"/]
 
-        UniversalMemory[/"UniversalMemory<br/>(Граф + Векторы + Концепты)"/]
-        
-        Orchestrator -- "Маршрутизирует Task/Report" --> Services
-        Services -- "Делегирует вычисления" --> LLM
-        Services -- "Читает/Пишет опыт" --> UniversalMemory
-        Orchestrator -- "Записывает всё" --> UniversalMemory
-    end
+    Orchestrator -- "Маршрутизирует Задачи" --> Services
+    Services -- "Делегирует вычисления" --> LLM
+    Services -- "Читает/Пишет опыт" --> UniversalMemory
+    Orchestrator -- "Записывает всё" --> UniversalMemory
 
-    style Orchestrator fill:#DC7633,stroke:#fff,stroke-width:2px,color:#000
-    style LLM fill:#5DADE2,stroke:#fff,stroke-width:2px,color:#000,stroke-dasharray: 5 5
-    style UniversalMemory fill:#1D8348,stroke:#fff,stroke-width:2px,color:#fff
+    classDef memoryStyle fill:#1D8348,stroke:#fff,stroke-width:2px,color:#fff
+    classDef processStyle fill:#444,stroke:#888,stroke-width:2px,color:#fff
+    classDef llmStyle fill:#5DADE2,stroke:#fff,stroke-width:1px,color:#000
+    
+    class UniversalMemory memoryStyle
+    class Orchestrator,Services processStyle
+    class LLM llmStyle
 ```
 
 *   **`Оркестратор` (Нервная Система):** Это центральный асинхронный хаб, управляющий всем жизненным циклом "мысли". Он не содержит бизнес-логики, а лишь маршрутизирует `Задачи` (`Task`) и `Отчёты` (`Report`) между `Сервисами`. Это обеспечивает гибкость и модульность всей системы.

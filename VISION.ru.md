@@ -63,29 +63,18 @@ _T.H.E.A. — это не конечный продукт, а **первый ш�
 
 ```mermaid
 flowchart LR
-    %% Верхний узел
     UM["UniversalMemory<br/>Накопленный опыт"]
-
-    %% Правая сторона
     Extractor["Шаг 1: Экстракция<br/>'Золотого Датасета'"]
-
-    %% Нижний узел
     Dataset[("Golden Dataset<br/>Когнитивные цепочки")]
-
-    %% Левая сторона
     FinetuneProcess["Шаг 2: Файнтюнинг<br/>(Обучение новой LLM)"]
-
-    %% Центр снизу
     EvolvedLLM(("Улучшенная LLM<br/>Новый 'когнитивный движок'"))
 
-    %% Связи по кругу
     UM --> Extractor
     Extractor --> Dataset
     Dataset --> FinetuneProcess
     FinetuneProcess --> EvolvedLLM
     EvolvedLLM --> UM
 
-    %% Стили
     classDef memoryStyle fill:#1D8348,stroke:#fff,stroke-width:2px,color:#fff
     classDef processStyle fill:#444,stroke:#888,stroke-width:2px,color:#fff
     classDef llmStyle fill:#5DADE2,stroke:#fff,stroke-width:1px,color:#000
