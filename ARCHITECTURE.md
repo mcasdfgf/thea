@@ -29,8 +29,35 @@ The central component, embodying the idea of a structured "soup of interactions,
 
 The interaction of components is organized as an **asynchronous, agentic Cognitive Cycle**, which is a direct implementation of the "Trial and Error at Scale" principle.
 
+```mermaid
+graph TD
+    subgraph T.H.E.A. Cognitive Core
+        direction TB
+        
+        Orchestrator(Orchestrator<br/>/The Nervous System/)
+        
+        subgraph Services [Cognitive Services]
+            Planner("Planner<br/>(Planning)")
+            Recall("Recall<br/>(Memory Recall)")
+            WebSearch("WebSearch<br/>(Web Search)")
+            Synthesizer("Synthesis<br/>(Synthesis)")
+            Reflection("Reflection<br/>(Reflection)")
+        end
+        
+        LLM[("Cognitive Engine<br/>(LLM)")]
 
-*(Note: A real diagram should be inserted here)*
+        UniversalMemory[/"UniversalMemory<br/>(Graph + Vectors + Concepts)"/]
+        
+        Orchestrator -- "Routes Task/Report" --> Services
+        Services -- "Delegate computation" --> LLM
+        Services -- "Read/Write experience" --> UniversalMemory
+        Orchestrator -- "Record everything" --> UniversalMemory
+    end
+
+    style Orchestrator fill:#DC7633,stroke:#fff,stroke-width:2px,color:#000
+    style LLM fill:#5DADE2,stroke:#fff,stroke-width:2px,color:#000,stroke-dasharray: 5 5
+    style UniversalMemory fill:#1D8348,stroke:#fff,stroke-width:2px,color:#fff
+```
 
 *   **`Orchestrator` (The Nervous System):** This is the central asynchronous hub that manages the entire lifecycle of a "thought." It contains no business logic, only routing `Tasks` and `Reports` between `Services`. This ensures the flexibility and modularity of the entire system.
 
@@ -56,7 +83,32 @@ The T.H.E.A. architecture is designed with future **evolution** in mind. The "ex
 
 ### 4. Component Interaction Diagram
 
-*(A more detailed sequence diagram can be added here, showing how a `UserImpulse` flows through the `ReflexivePlannerService`, generates a plan executed by other services, and is finally assembled by the `SynthesisService`.)*
+```mermaid
+sequenceDiagram
+    participant User
+    participant Orch as Orchestrator
+    participant Plan as PlannerService
+    participant Recall as RecallService
+    participant Synth as SynthesisService
+
+    User->>Orch: Sends impulse (text)
+    note right of User: UserImpulseNode is created
+    
+    Orch->>Plan: Task("analyze_impulse")
+    Plan-->>Orch: Report(with a plan)
+    note left of Plan: PlanNode is created
+    
+    Orch->>Recall: Task("recall_request")
+    note right of Orch: (Other plan tasks<br/>execute in parallel...)
+    Recall-->>Orch: Report(with fragments<br/>from memory)
+    
+    Orch->>Synth: Passes impulse and all<br/>collected results
+    note right of Synth: Synthesizing final answer
+    Synth-->>Orch: Report(with final text)
+    
+    Orch->>User: Sends final response
+    note right of User: FinalResponseNode is created
+```
 
 **Approximate lifecycle of a single "impulse":**
 1.  **User -> `Orchestrator`:** `handle_user_impulse` creates a `UserImpulseNode`.

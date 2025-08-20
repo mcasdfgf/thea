@@ -50,6 +50,34 @@ The primary mechanism of evolution and cognition is **"Trial and Error at Scale.
 
 In a world without absolute external meaning, "Truth" is not a static fact, but a current **"Convergent Truth."** It is a highly stable, verified model whose essence corresponds to the scientific principle of reproducibility and re-verification: it is confirmed by the intersection of multiple independent "vectors" (observations, calculations, experiments). The more "vectors" converge at one "point," the "truer" it is within the current "limit of the closed system."
 
+```mermaid
+graph TD
+    subgraph "Information Sources (Vectors)"
+        V1["Vector 1<br/>(Personal Experience)"]
+        V2["Vector 2<br/>(External Data)"]
+        VN["Vector N<br/>(Observation)"]
+    end
+    
+    CognitionProcess["Cognition Process:<br/>Finding intersections &<br/>consistent patterns"]
+    
+    ConvergentTruth{{"'Convergent Point'<br/>(Convergent Truth)"}}
+    
+    V1 --> CognitionProcess
+    V2 --> CognitionProcess
+    VN --> CognitionProcess
+    CognitionProcess --> ConvergentTruth
+    
+    %% Defining styles via classes is the most reliable method
+    classDef vectorStyle fill:#5DADE2,stroke:#fff,stroke-width:1px,color:#000
+    classDef processStyle fill:#444,stroke:#888,stroke-width:2px,color:#fff
+    classDef resultStyle fill:#1D8348,stroke:#fff,stroke-width:2px,color:#fff
+    
+    %% Applying classes to nodes
+    class V1,V2,VN vectorStyle
+    class CognitionProcess processStyle
+    class ConvergentTruth resultStyle
+```
+
 #### **2.2. Noise and Inertia: The Barriers to Cognition**
 
 *   **Noise:** This is not an external interference but a **"Data Scarcity Signal."** What is perceived as "randomness" is the manifestation of those "discrete interactions" that are not yet "computable." Noise is not an enemy, but an **invitation to "dig deeper."**
