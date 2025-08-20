@@ -61,6 +61,31 @@ The T.H.E.A. architecture and its atomic components are the foundation for a new
     2.  **Fine-Tuning the LLM "Swarm":** Training specialized models to more effectively use their "body" (memory, services).
     3.  **The "Personality Transfer":** Experimental evolution of the **Central Coordinating Model** for deep integration of "The Assembler of Being" ontology and the transfer of accumulated "experience" to new, more advanced "cognitive engines."
 
+```mermaid
+flowchart LR
+    UM["UniversalMemory<br/>Accumulated Experience"]
+    Extractor["Step 1: Extraction of<br/>the 'Golden Dataset'"]
+    Dataset[("Golden Dataset<br/>Cognitive Chains")]
+    FinetuneProcess["Step 2: Fine-Tuning<br/>(Training a new LLM)"]
+    EvolvedLLM(("Evolved LLM<br/>New 'Cognitive Engine'"))
+
+    UM --> Extractor
+    Extractor --> Dataset
+    Dataset --> FinetuneProcess
+    FinetuneProcess --> EvolvedLLM
+    EvolvedLLM -- "Step 3: Starts a new cycle,<br/>creating higher-quality experience" --> UM
+
+    classDef memoryStyle fill:#1D8348,stroke:#fff,stroke-width:2px,color:#fff
+    classDef processStyle fill:#444,stroke:#888,stroke-width:2px,color:#fff
+    classDef llmStyle fill:#5DADE2,stroke:#fff,stroke-width:1px,color:#000
+    classDef datasetStyle fill:#FAD7A0,stroke:#fff,stroke-width:1px,color:#000
+
+    class UM memoryStyle
+    class Extractor,FinetuneProcess processStyle
+    class EvolvedLLM llmStyle
+    class Dataset datasetStyle
+```
+
 #### Phase 3: From Prototype to Platform (Long-Term Vision)
 
 *   **Memory Scaling:** Writing "drivers" for a seamless transition of `UniversalMemory` to industrial-grade graph databases (e.g., Neo4j), allowing it to work with millions of "convergent truths."

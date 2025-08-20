@@ -21,6 +21,32 @@ The central component, embodying the idea of a structured "soup of interactions,
     2.  **Vector Layer (`ChromaDB`):** Provides semantic proximity and contextual search. *("what is similar to what?")*
     3.  **Conceptual Layer (`spaCy`):** Indexes key concepts (lemmas), forming the thematic core of knowledge. *("what is this about?")*
 
+```mermaid
+flowchart TD
+    Input["Incoming 'Experience'<br/>(UserImpulse, ReportNode, etc.)"]
+    Deconstruction["<b>Deconstruction:</b><br/>Extracting Concepts & Relations"]
+    
+    subgraph "Integration into Three Memory Layers"
+        direction LR
+        L1[/"<b>Graph Layer</b><br/>(networkx)"/]
+        L2[/"<b>Vector Layer</b><br/>(ChromaDB)"/]
+        L3[/"<b>Conceptual Layer</b><br/>(token_index)"/]
+    end
+
+    Input --> Deconstruction
+    Deconstruction --> L1
+    Deconstruction --> L2
+    Deconstruction --> L3
+
+    classDef memoryStyle fill:#1D8348,stroke:#fff,stroke-width:2px,color:#fff
+    classDef processStyle fill:#444,stroke:#888,stroke-width:2px,color:#fff
+    classDef llmStyle fill:#5DADE2,stroke:#fff,stroke-width:1px,color:#000
+    
+    class L1,L2,L3 memoryStyle
+    class Input llmStyle
+    class Deconstruction processStyle
+```
+
 *   **Principle of Self-Organization:** The memory is **autopoietic**. Any "experience" (a user impulse, a search result, an internal reflection) is not merely saved but is automatically deconstructed and integrated into all three layers. This forms stable **"convergent truths,"** not just a dump of raw data.
 
 *   **Development Vector ("Quad-Memory"):** The next step is the integration of a **Temporal Layer** to track the dynamics and evolution of knowledge (*"when and how did this change?"*).
@@ -30,33 +56,24 @@ The central component, embodying the idea of a structured "soup of interactions,
 The interaction of components is organized as an **asynchronous, agentic Cognitive Cycle**, which is a direct implementation of the "Trial and Error at Scale" principle.
 
 ```mermaid
-graph TD
-    subgraph T.H.E.A. Cognitive Core
-        direction TB
-        
-        Orchestrator(Orchestrator<br/>/The Nervous System/)
-        
-        subgraph Services [Cognitive Services]
-            Planner("Planner<br/>(Planning)")
-            Recall("Recall<br/>(Memory Recall)")
-            WebSearch("WebSearch<br/>(Web Search)")
-            Synthesizer("Synthesis<br/>(Synthesis)")
-            Reflection("Reflection<br/>(Reflection)")
-        end
-        
-        LLM[("Cognitive Engine<br/>(LLM)")]
+flowchart TD
+    Orchestrator("Orchestrator<br/>The Nervous System")
+    Services["Cognitive Services<br/>(Planning, Recall, Synthesis...)"]
+    LLM(("Cognitive Engine<br/>(LLM)"))
+    UM[/"UniversalMemory<br/>(Memory)"/]
 
-        UniversalMemory[/"UniversalMemory<br/>(Graph + Vectors + Concepts)"/]
-        
-        Orchestrator -- "Routes Task/Report" --> Services
-        Services -- "Delegate computation" --> LLM
-        Services -- "Read/Write experience" --> UniversalMemory
-        Orchestrator -- "Record everything" --> UniversalMemory
-    end
+    Orchestrator -- "Routes Tasks" --> Services
+    Services -- "Delegate computation" --> LLM
+    Services -- "Read/Write experience" --> UM
+    Orchestrator -- "Records everything" --> UM
 
-    style Orchestrator fill:#DC7633,stroke:#fff,stroke-width:2px,color:#000
-    style LLM fill:#5DADE2,stroke:#fff,stroke-width:2px,color:#000,stroke-dasharray: 5 5
-    style UniversalMemory fill:#1D8348,stroke:#fff,stroke-width:2px,color:#fff
+    classDef memoryStyle fill:#1D8348,stroke:#fff,stroke-width:2px,color:#fff
+    classDef processStyle fill:#444,stroke:#888,stroke-width:2px,color:#fff
+    classDef llmStyle fill:#5DADE2,stroke:#fff,stroke-width:1px,color:#000
+    
+    class UM memoryStyle
+    class Orchestrator,Services processStyle
+    class LLM llmStyle
 ```
 
 *   **`Orchestrator` (The Nervous System):** This is the central asynchronous hub that manages the entire lifecycle of a "thought." It contains no business logic, only routing `Tasks` and `Reports` between `Services`. This ensures the flexibility and modularity of the entire system.
