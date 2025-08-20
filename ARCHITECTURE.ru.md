@@ -29,39 +29,39 @@
 
 Взаимодействие компонентов организовано в виде **асинхронного, агентного Когнитивного Цикла**, который является прямой реализацией принципа "Перебора с Отбраковкой".
 
- 
-*(Примечание: сюда нужно будет вставить реальную диаграмму)*
+```mermaid
+graph TD
+    subgraph T.H.E.A. Cognitive Core
+        direction TB
+        
+        Orchestrator(Orchestrator<br/>/Нервная Система/)
+        
+        subgraph Services [Когнитивные Сервисы]
+            Planner("Planner<br/>(Планирование)")
+            Recall("Recall<br/>(Припоминание)")
+            WebSearch("WebSearch<br/>(Веб-поиск)")
+            Synthesizer("Synthesis<br/>(Синтез)")
+            Reflection("Reflection<br/>(Рефлексия)")
+        end
+        
+        LLM[("Cognitive Engine<br/>(LLM)")]
 
+        UniversalMemory[/"UniversalMemory<br/>(Граф + Векторы + Концепты)"/]
+        
+        Orchestrator -- "Маршрутизирует Task/Report" --> Services
+        Services -- "Делегирует вычисления" --> LLM
+        Services -- "Читает/Пишет опыт" --> UniversalMemory
+        Orchestrator -- "Записывает всё" --> UniversalMemory
+    end
+
+    style Orchestrator fill:#DC7633,stroke:#fff,stroke-width:2px,color:#000
+    style LLM fill:#5DADE2,stroke:#fff,stroke-width:2px,color:#000,stroke-dasharray: 5 5
+    style UniversalMemory fill:#1D8348,stroke:#fff,stroke-width:2px,color:#fff
+```
+ 
 *   **`Оркестратор` (Нервная Система):** Это центральный асинхронный хаб, управляющий всем жизненным циклом "мысли". Он не содержит бизнес-логики, а лишь маршрутизирует `Задачи` (`Task`) и `Отчёты` (`Report`) между `Сервисами`. Это обеспечивает гибкость и модульность всей системы.
 
 *   **`Сервисы` (Когнитивные Функции):** Это атомарные, независимые модули (`CognitiveService`), каждый из которых отвечает за свою узкую когнитивную функцию (`Планирование`, `Поиск в памяти`, `Веб-поиск`, `Синтез`, `Рефлексия`). Такая декомпозиция позволяет системе обладать **эмерджентной устойчивостью**: сбой одного `Сервиса` не обрушивает весь цикл, а становится "отбракованным результатом", который другие `Сервисы` могут проанализировать и компенсировать.
-
-```mermaid
-sequenceDiagram
-    participant User as Пользователь
-    participant Orch as Оркестратор
-    participant Plan as PlannerService
-    participant Recall as RecallService
-    participant Synth as SynthesisService
-
-    User->>Orch: Отправляет импульс (текст)
-    note right of User: Создается UserImpulseNode
-    
-    Orch->>Plan: Task("analyze_impulse")
-    Plan-->>Orch: Report(с планом)
-    note left of Plan: Создается PlanNode
-    
-    Orch->>Recall: Task("recall_request")
-    note right of Orch: (Параллельно выполняются<br/>другие задачи из плана...)
-    Recall-->>Orch: Report(с найденными<br/>фрагментами из памяти)
-    
-    Orch->>Synth: Передает импульс и все<br/>собранные результаты
-    note right of Synth: Синтез финального ответа
-    Synth-->>Orch: Report(с финальным текстом)
-    
-    Orch->>User: Отправляет финальный ответ
-    note right of User: Создается FinalResponseNode
-```
 
 *   **Когнитивный Движок (LLM как Сервис):**
     *   **Текущая Реализация:** В прототипе используется одна универсальная LLM (`llama3.1:8b` через `Ollama`), которой `Сервисы` делегируют задачи "вычисления", используя для каждой свой уникальный системный промпт.
