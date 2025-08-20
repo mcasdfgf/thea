@@ -1,0 +1,33 @@
+ru-100k.txt
+smart_preprocessor.py
+two_stroke_engine_test.py
+
+# Python-специфичные файлы
+*.pyc
+__pycache__/
+
+# Виртуальные окружения
+.venv/
+venv/
+env/
+lib/
+
+# Другие часто игнорируемые файлы (опционально, но полезно)
+.vscode/ # Для настроек VS Code
+.idea/   # Для PyCharm/IntelliJ IDEA
+*.log
+*.sqlite3
+.projectile
+
+test_main.py
+test_memory.py
+test_consciousness.py
+chroma_db*
+memory_core_chroma_db
+memory_core.graphml
+system_log.txt
+
+code*
+bibl.txt
+experiment.py
+services/context_builder_service.py.bak
