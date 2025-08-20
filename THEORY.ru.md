@@ -111,9 +111,15 @@ graph TD
     VN --> CognitionProcess
     CognitionProcess --> ConvergentTruth
     
-    style V1,V2,VN fill:#5DADE2,stroke:#fff,stroke-width:1px,color:#000
-    style CognitionProcess fill:#444,stroke:#888,stroke-width:2px,color:#fff
-    style ConvergentTruth fill:#1D8348,stroke:#fff,stroke-width:2px,color:#fff
+    %% Определение стилей через классы - это самый надежный способ
+    classDef vectorStyle fill:#5DADE2,stroke:#fff,stroke-width:1px,color:#000
+    classDef processStyle fill:#444,stroke:#888,stroke-width:2px,color:#fff
+    classDef resultStyle fill:#1D8348,stroke:#fff,stroke-width:2px,color:#fff
+    
+    %% Применение классов к узлам
+    class V1,V2,VN vectorStyle
+    class CognitionProcess processStyle
+    class ConvergentTruth resultStyle
 ```
 
 ---
