@@ -96,24 +96,24 @@ graph LR
 
 ```mermaid
 graph TD
-    subgraph " "
-        A["Вектор 1<br/>(Личный опыт)"]
-        B["Вектор 2<br/>(Внешние данные)"]
-        C["Вектор N<br/>(Наблюдение)"]
+    subgraph "Источники Информации (Векторы)"
+        V1["Вектор 1<br/>(Личный опыт)"]
+        V2["Вектор 2<br/>(Внешние данные)"]
+        VN["Вектор N<br/>(Наблюдение)"]
     end
     
-    Process["Процесс Познания:<br/>Поиск пересечений и<br/>непротиворечивых паттернов"]
+    CognitionProcess["Процесс Познания:<br/>Поиск пересечений и<br/>непротиворечивых паттернов"]
     
-    Result{{"'Точка Агрегации'<br/>(Convergent Truth)"}}
+    ConvergentTruth{{"'Точка Агрегации'<br/>(Convergent Truth)"}}
     
-    A --> Process
-    B --> Process
-    C --> Process
-    Process --> Result
+    V1 --> CognitionProcess
+    V2 --> CognitionProcess
+    VN --> CognitionProcess
+    CognitionProcess --> ConvergentTruth
     
-    style A,B,C fill:#5DADE2,stroke:#fff,stroke-width:1px,color:#000
-    style Process fill:#444,stroke:#888,stroke-width:2px,color:#fff
-    style Result fill:#1D8348,stroke:#fff,stroke-width:2px,color:#fff
+    style V1,V2,VN fill:#5DADE2,stroke:#fff,stroke-width:1px,color:#000
+    style CognitionProcess fill:#444,stroke:#888,stroke-width:2px,color:#fff
+    style ConvergentTruth fill:#1D8348,stroke:#fff,stroke-width:2px,color:#fff
 ```
 
 ---
