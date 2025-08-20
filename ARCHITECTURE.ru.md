@@ -83,7 +83,32 @@ sequenceDiagram
 
 ### 4. Схема Взаимодействия Компонентов
 
-*(Здесь можно будет добавить более детальную диаграмму последовательности, показывающую, как `UserImpulse` проходит через `ReflexivePlannerService`, порождает план, который исполняется другими сервисами, и в конце собирается `SynthesisService`.)*
+```mermaid
+sequenceDiagram
+    participant User as Пользователь
+    participant Orch as Оркестратор
+    participant Plan as PlannerService
+    participant Recall as RecallService
+    participant Synth as SynthesisService
+
+    User->>Orch: Отправляет импульс (текст)
+    note right of User: Создается UserImpulseNode
+    
+    Orch->>Plan: Task("analyze_impulse")
+    Plan-->>Orch: Report(с планом)
+    note left of Plan: Создается PlanNode
+    
+    Orch->>Recall: Task("recall_request")
+    note right of Orch: (Параллельно выполняются<br/>другие задачи из плана...)
+    Recall-->>Orch: Report(с найденными<br/>фрагментами из памяти)
+    
+    Orch->>Synth: Передает импульс и все<br/>собранные результаты
+    note right of Synth: Синтез финального ответа
+    Synth-->>Orch: Report(с финальным текстом)
+    
+    Orch->>User: Отправляет финальный ответ
+    note right of User: Создается FinalResponseNode
+```
 
 **Примерный жизненный цикл одного "импульса":**
 1.  **Пользователь -> `Оркестратор`:** `handle_user_impulse` создает `UserImpulseNode`.
