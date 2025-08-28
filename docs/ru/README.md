@@ -34,6 +34,6 @@
 -   [2. Когнитивный Трейсер (`trace`)](02_cognitive_tracer.md)
 -   [3. Навигатор по Графу (`list`, `get`)](03_graph_navigator.md)
 -   [4. Инспектор Знаний (`insights`, `ifind`, `iget`)](04_insight_inspector.md)
--   [5. Когнитивные Зонды (`plan`, `probe`)](05_planner_probe.md)
+-   [5. Когнитивные Зонды (`plan`, `probe`)](05_cognitive_probes.md)
 
 (Примечание: Документация для простой команды stat включена в описание основного интерфейса Nexus.)

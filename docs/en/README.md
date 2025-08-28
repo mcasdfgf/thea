@@ -34,6 +34,6 @@ All tools are implemented as plugins for the unified interactive console, `Nexus
 -   [2. The Cognitive Tracer (`trace`)](02_cognitive_tracer.md)
 -   [3. The Graph Navigator (`list`, `get`)](03_graph_navigator.md)
 -   [4. The Insight Inspector (`insights`, `ifind`, `iget`)](04_insight_inspector.md)
--   [5. The Cognitive Probes (`plan`, `probe`)](05_planner_probe.md)
+-   [5. The Cognitive Probes (`plan`, `probe`)](05_cognitive_probes.md)
 
 *(Note: Documentation for the simple `stat` command is included in the description of the main `Nexus` interface.)*
