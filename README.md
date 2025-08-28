@@ -214,9 +214,9 @@ To explore the system, you will need two running processes: the backend server (
 
 ### 5. 🏛️ The Architectural Core: A Brief Overview
 
-To understand how T.H.E.A. achieves its goals, one must look at the three key principles of its architecture. A full description is available in **[ARCHITECTURE.en.md](./docs/ARCHITECTURE.en.md)**.
+To understand how T.H.E.A. achieves its goals, one must look at the three key principles of its architecture. A full description is available in **[ARCHITECTURE.md](./docs/ARCHITECTURE.md)**.
 
-*   **Ontology-Before-Code:** The architecture was not chosen, but *derived* from its own ontological model, **"The Assembler of Being."** Every service and module is a direct consequence of philosophical axioms about the nature of cognition. The detailed model is described in **[THEORY.en.md](./docs/THEORY.en.md)**.
+*   **Ontology-Before-Code:** The architecture was not chosen, but *derived* from its own ontological model, **"The Assembler of Being."** Every service and module is a direct consequence of philosophical axioms about the nature of cognition. The detailed model is described in **[THEORY.md](./docs/THEORY.md)**.
 
 *   **Dual Cognitive Loops instead of "Request-Response":** The system operates not as a linear chatbot but as an asynchronous mechanism with two "speeds" of thought. A **fast loop** handles user interaction, while a **slow background loop** is dedicated to reflection—analyzing accumulated experience, synthesizing new knowledge, and self-structuring.
 
@@ -231,7 +231,7 @@ Key roadmap milestones:
 2.  **Autonomous Reflection:** Transitioning the `ReflectionService` from an on-demand mode (`!reflect`) to a continuously running background process that will independently "ask itself questions" and discover non-obvious connections in its accumulated experience.
 3.  **Closing the Finetuning Loop:** Creating tools for extracting a **"Golden Dataset"** from `UniversalMemory` and conducting the first **"Personality Transfer"** experiment.
 
-The complete vision and detailed roadmap are presented in **[VISION.en.md](./docs/VISION.en.md)**.
+The complete vision and detailed roadmap are presented in **[VISION.md](./docs/VISION.md)**.
 
 ---
 
