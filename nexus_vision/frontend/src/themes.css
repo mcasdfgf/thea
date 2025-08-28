@@ -1,0 +1,37 @@
+.theme-default {
+  --color-background: #0d0f12;
+  --color-grid: rgba(180, 180, 180, 0.1);
+  --color-text-primary: #d1d5db;
+  --color-text-secondary: #8b949e;
+  --color-accent: #58a6ff;
+  --color-border: #2a2c2f;
+  --color-panel-bg: rgba(18, 20, 23, 0.8);
+  --color-warning: #d73a49;
+  --color-trace-button: #d73a49;
+  --text-glow: 0 0 2px rgba(88, 166, 255, 0.2);
+}
+.theme-hacker {
+  --color-background: #050803;
+  --color-grid: rgba(0, 255, 65, 0.08);
+  --color-text-primary: #a2fca2;
+  --color-text-secondary: #5f9c5f;
+  --color-accent: #00ff41;
+  --color-border: #0f2e1a;
+  --color-panel-bg: rgba(8, 20, 12, 0.8);
+  --color-warning: #ff8c00;
+  --color-trace-button: #ff8c00;
+  --text-glow: 0 0 3px rgba(0, 255, 65, 0.3);
+}
+
+.theme-pink {
+  --color-background: #2a2438;
+  --color-grid: rgba(255, 143, 171, 0.1);
+  --color-text-primary: #f0e6f2;
+  --color-text-secondary: #a39bb8;
+  --color-accent: #ff8fab;
+  --color-border: #352e47;
+  --color-panel-bg: rgba(30, 25, 40, 0.8);
+  --color-warning: #ffd166;
+  --color-trace-button: #ef476f;
+  --text-glow: 0 0 3px rgba(255, 143, 171, 0.3);
+}

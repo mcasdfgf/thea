@@ -1,0 +1,7 @@
+lxml
+dotenv
+python-dotenv
+fastapi
+uvicorn
+colorama
+networkx
