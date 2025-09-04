@@ -1,0 +1,21 @@
+# Core dependencies
+colorama
+aioconsole
+openai
+redis
+networkx
+pyyaml
+python-dotenv
+requests
+numpy
+
+# Memory & Embeddings
+chromadb
+sentence-transformers
+
+# Web Search (stub)
+duckduckgo_search
+
+# Nexus Vision Backend (optional, for visualization)
+fastapi
+uvicorn
